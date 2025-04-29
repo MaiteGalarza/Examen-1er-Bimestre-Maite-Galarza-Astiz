@@ -8,7 +8,7 @@ public class PersonalTrainer : MonoBehaviour
     public int cantidadDeHoras;
 
     int precioTotal;
-    int precioConDescuento;
+    float precioConDescuento;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,22 @@ public class PersonalTrainer : MonoBehaviour
             Debug.Log("Cantidad de horas no valida o código incorrecto");
             return;
         }  
-
+        if (tipoDeServicio == "C")
+        {
+            precioTotal = cantidadDeHoras * 1000;
+        } else if (tipoDeServicio == "F")
+        {
+            precioTotal = cantidadDeHoras * 1500;
+        } else
+        {
+            precioTotal = cantidadDeHoras * 2500;
+        }
+        if (cantidadDeHoras == 6)
+        {
+            precioConDescuento = precioTotal * 0.9f;
+        }
+        Debug.Log("Tipo de entrenamiento: " + tipoDeServicio + " - Cantidad de horas reservadas: " + cantidadDeHoras + 
+            "h - Precio sin descuento: $" + precioTotal + " - Precio con descuento: $" + precioConDescuento );
     }
 
     // Update is called once per frame
